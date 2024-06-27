@@ -18,6 +18,7 @@
     "hypercore": "^10.37.8",
     "hyperdht": "^6.15.1",
     "hyperswarm": "^4.7.15",
+    "nodemon": "^3.1.4",
     "tape": "^5.8.1"
   }
 }
