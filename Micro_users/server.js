@@ -2,6 +2,7 @@ import app from "./app.js";
 import DHT from "hyperdht";
 import RPC from "@hyperswarm/rpc";
 import { addUser, getUser, listUsers } from "./models/userModel.js";
+import { connectToService } from "./services/rpcClient.js";
 
 const PORT = process.env.PORT || 3001;
 
@@ -33,10 +34,12 @@ server.on("request", async (req, res) => {
 server.listen(keyPair);
 
 console.log(
-  `RPC server is running with public key: ${keyPair.publicKey.toString("hex")}`
+  `User RPC server is running with public key: ${keyPair.publicKey.toString(
+    "hex"
+  )}`
 );
 
 // Start Express server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`User server is running on port ${PORT}`);
 });

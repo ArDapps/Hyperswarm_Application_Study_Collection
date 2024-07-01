@@ -1,4 +1,3 @@
-// controllers/todoController.js
 import {
   addTodoItem,
   getTodoItem,
@@ -6,18 +5,22 @@ import {
 } from "../models/todoModel.js";
 
 export async function addTodo(req, res) {
-  const { key, value } = req.body;
-  const toDo = await addTodoItem(key, value);
-  res.json({ success: true, toDo });
+  const { userId, value } = req.body;
+  const todo = await addTodoItem(userId, value);
+  console.log(
+    `Todo item added: { id: ${todo.id}, userId: ${todo.userId}, value: ${todo.value} }`
+  );
+  res.json({ success: true, todo });
 }
 
 export async function getTodo(req, res) {
-  const { key } = req.params;
-  const result = await getTodoItem(key);
+  const { id } = req.params;
+  const result = await getTodoItem(id);
   res.json(result);
 }
 
 export async function listTodos(req, res) {
-  const todos = await listTodoItems();
+  const { userId } = req.query; // Use query parameter to filter by userId
+  const todos = await listTodoItems(userId);
   res.json(todos);
 }
