@@ -1,16 +1,16 @@
 import DHT from "hyperdht";
 import RPC from "@hyperswarm/rpc";
+import b4a from "b4a";
 
-const dht = new DHT();
 const rpc = new RPC();
 
 export const connectToService = (publicKey) => {
   return new Promise((resolve, reject) => {
-    const socket = dht.connect(publicKey);
-    socket.on("open", () => {
-      const client = rpc.createClient(socket); // Correct method to create a client
+    const publicKeyBuffer = b4a.from(publicKey, "hex"); // Convert the public key to a buffer
+    const client = rpc.connect(publicKeyBuffer);
+    client.on("open", () => {
       resolve(client);
     });
-    socket.on("error", reject);
+    client.on("error", reject);
   });
 };
