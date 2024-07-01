@@ -1,0 +1,27 @@
+{
+  "name": "hyperbeeex",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@hyperswarm/dht": "^6.5.1",
+    "express": "^4.19.2",
+    "hyperbee": "^2.19.7",
+    "hypercore": "^10.37.8",
+    "hyperdht": "^6.15.1",
+    "hyperswarm": "^4.8.0",
+    "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "chai-http": "^5.0.0",
+    "mocha": "^10.5.2"
+  }
+}
